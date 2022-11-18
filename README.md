@@ -7,8 +7,13 @@ Ansible.
 
 
 ```sh
-ansible-pull 
+sudo ansible-pull -U  https://github.com/Dominik-Hillmann/ansible-desktop-setup.git
 ```
 
-### Prerequsites
+## Prerequsites
 
+Install Ansible:
+
+```sh
+sudo apt install ansible
+```

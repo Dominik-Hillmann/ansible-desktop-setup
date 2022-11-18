@@ -6,5 +6,26 @@
 
   tasks:
     - name: Install htop
-      package: 
+      apt: 
         name: htop
+        state: absent
+        autoremove: true
+    - name: Install cowsay
+      apt:
+        name: cowsay
+        state: present
+    # - name: Install Java and Maven
+
+    # - name: Install Python 3
+
+    # - name: Insta
+
+
+# Docker
+# Java
+# Python
+# VS Code mit Extensions
+# Git
+# Repositories dir mit wichtigsten Projekten und Obsidian notes
+# Obsidian
+# Snap<
