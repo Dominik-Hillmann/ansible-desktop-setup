@@ -1,0 +1,10 @@
+---
+
+- hosts: localhost # addresses machine Ansible runs on
+  connection: local
+  become: true # basically sudo
+
+  tasks:
+    - name: Install htop
+      package: 
+        name: htop
