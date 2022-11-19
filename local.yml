@@ -5,27 +5,42 @@
   become: true # basically sudo
 
   tasks:
-    - name: Install htop
-      apt: 
-        name: htop
-        state: absent
-        autoremove: true
-    - name: Install cowsay
-      apt:
-        name: cowsay
-        state: present
-    # - name: Install Java and Maven
-
-    # - name: Install Python 3
-
-    # - name: Insta
-
+    - name: Check if cargo is installed and store outcome in cargo_exists
+      shell: command -v cargo
+      register: cargo_exists
+      ignore_errors: yes
+      tags:
+        - rust
+    - name: Download cargo Installer
+      when: cargo_exists is failed # dependent on variable set in task before
+      get_url:
+        url: https://sh.rustup.rs
+        dest: /tmp/sh.rustup.rs
+        mode: '0755'
+        force: 'yes'
+      tags:
+        - rust
+    - name: Install Rust and Cargo by executing downloaded script
+      when: cargo_exists is failed
+      shell: /tmp/sh.rustup.rs -y
+      tags:
+        - rust
 
 # Docker
 # Java
 # Python
+# Node.js
+# Rust
 # VS Code mit Extensions
+# Chromium
+# VLC media player
+# zoom
+# skype, Discord, Signal
 # Git
 # Repositories dir mit wichtigsten Projekten und Obsidian notes
 # Obsidian
-# Snap<
+# Snap
+# Put important applications into dock 
+# Starship
+# LaTeX
+# IntelliJ
