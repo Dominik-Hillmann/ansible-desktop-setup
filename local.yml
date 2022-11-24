@@ -4,7 +4,7 @@
   connection: local
   become: true # basically sudo
   roles:
-    - "githubixx.kubectl"
+    - role: githubixx.kubectl
 
   tasks:
     - name: Check if cargo is installed and store outcome in cargo_exists
